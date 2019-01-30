@@ -1,0 +1,68 @@
+{% extends "buyer/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="users_box">
+        <div class="users_box_top">会员注册</div>
+        <div class="users_box_bottom">
+            <div class="box_bottom_left"><img src="{% static 'buyer/images/huiyuan.jpg'%}"/></div>
+            <div class="box_bottom_right">
+
+                <form method="post" action="" enctype="multipart/form-data">
+                    {% csrf_token  %}
+                    <div>
+                        邮&nbsp;箱：<input  id = "email" type="email" name="username" placeholder="请输入邮箱" required=""  class="input"/><span></span>
+                    </div>
+                    <div>
+                        验证码：<input type="password" name="code" placeholder="请输入验证码" required="" style='width: 150px' class="input" id="code"/>
+                        <input class="huoqu" id="yzm" type="button" value=" 获取验证码 "><span></span>
+                    </div>
+                    <div>
+                        密&nbsp;码：<input type="password" name="userpass" placeholder="请输入密码" required="" class="input"/>
+                    </div>
+                    <div>
+                        重复密码：<input type="password" name="repassword" placeholder="请再次输入密码" required="" class="input"/>
+                    </div>
+                    <div>
+                        昵&nbsp;称：<input type="text" name="nickname" placeholder="请输入昵称" required="" id = "zhuce" class="input"/><span></span>
+                    </div>
+                    <div>
+                        头&nbsp;像：<input type="file" id="L_repass" name="userfiles" required="" autocomplete="off" class="layui-input" multiple>
+                    </div>
+                    <div >
+                        <input type="submit" id="submit"  value="注册会员" class="gouwu"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        $(
+            function () {
+                $("#yzm").click(
+                    function () {
+                        var email = $("#email").val();
+                        $.ajax(
+                            {
+                                {#  前一个是数据库里的email，后一个是前端输入的email #}
+                                url: "/buyer/sendMessage?username="+email,
+                                type: "get",
+                                data: "",
+                                success: function (data) {
+                                    console.log(data);
+                                    alert(data.data)
+                                },
+                                error:function (error) {
+                                    console.log(error)
+                                }
+                            }
+                        )
+                    }
+                )
+            }
+        )
+
+    </script>
+{% endblock %}

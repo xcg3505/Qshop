@@ -1,0 +1,31 @@
+{% extends "buyer/base.html" %}
+
+{% load static %}
+{% block userhead %}{{ buyername.nickname }}{% endblock %}
+{% block broad2 %}
+    [购物车]
+{% endblock %}
+{% block broad1 %}[送货地址]{% endblock %}
+{% block content %}
+        <div id="lunbo"> </div>
+
+        
+        <div class="shop_list">
+            <div class="list1_box">
+                {% for i in datas %}
+                <div class="list_box">
+                    <dl>
+                        <a href="/buyer/goods_details/{{ i.id }}/">
+                        <dt><img src="{{ i.img }}"/></dt>
+                        <dd align="center">
+                            <p>{{ i.name }}</p>
+                            <p>￥：{{ i.price }}元</p>
+                        </dd>
+                            </a>
+                    </dl>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}
+

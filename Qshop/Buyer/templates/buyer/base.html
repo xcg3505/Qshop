@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大司马生鲜商城网站</title>
+    <link type="text/css" href="{% static 'buyer/css/index.css' %}" rel="stylesheet">
+    <style>
+			
+			
+			#back{
+            width: 300px;
+            height: 200px;
+            position:absolute;
+            left:0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+				
+			}
+			
+		</style>
+</head>
+<body>
+<script src="{% static 'seller/js/jquery.min.js'%}"></script>
+    <!-- 头部开始 -->
+   <div class="header" style="height: 50px;">
+       <span style="font-size: 20px;color: #3c763d">欢迎：{% block userhead %}{% endblock %}</span>
+    <ul>
+        <li style="width: 150px"><a href="/buyer/address/" style="font-size: 30px">{% block broad1 %}{% endblock %}</a></li>
+         <li style="width: 120px"><a href="/buyer/carList/" style="font-size: 30px">{% block broad2 %}{% endblock %}</a></li>
+         <li><a href="/buyer/zhuce/" style="font-size: 30px">{% block broad3 %}{% endblock %}</a></li>
+        <li><a href="/buyer/login/" style="font-size: 30px">{% block broad4 %}{% endblock %}</a></li>
+    </ul>
+    </div>
+    
+    
+    <div class="header_logo">
+            <div class="logo"></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="/buyer/">首页<br/>Home</a></li>
+                    <li><a href="">鲜果<br/>Fruit</a></li>
+                    <li><a href="">会员中心<br/>VIP Club</a></li>
+                </ul>
+            </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
